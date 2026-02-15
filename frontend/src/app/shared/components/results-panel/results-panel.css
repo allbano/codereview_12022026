@@ -1,0 +1,23 @@
+/* results-panel.component.css */
+.results-panel {
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  padding: 16px;
+  margin-top: 15px;
+  overflow-y: visible;
+  /* Garante que o painel não herde cores de texto do chat-assistant */
+  color: #1f2937; 
+}
+
+.results-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+h3 {
+  margin-bottom: 12px;
+  font-size: 1.1rem;
+  font-weight: 600;
+}

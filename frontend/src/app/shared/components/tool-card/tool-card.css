@@ -1,0 +1,70 @@
+/* tool-card.component.css */
+.tool-card {
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+  cursor: pointer; 
+  transition: all 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 120px;
+}
+
+.tool-card:hover {
+  background-color: #f9fafb; 
+  border-color: #2563eb; 
+  transform: translateY(-2px);
+  box-shadow: 0 6px 10px rgba(0,0,0,0.1);
+}
+
+.tool-card h3 {
+  margin: 0;
+  font-size: 1.1rem;
+  color: #1f2937;
+  font-weight: 700;
+}
+
+.tool-card p {
+  margin: 4px 0 10px 0;
+  color: #4b5563;
+  font-size: 0.9rem;
+  flex-grow: 1; 
+}
+
+.tool-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 8px;
+}
+
+.tag {
+    font-size: 0.75rem; 
+    padding: 4px 8px;
+    border-radius: 6px;
+    font-weight: 500;
+}
+
+.required { background-color: #fee2e2; color: #b91c1c; }
+.not-required { background-color: #d1fae5; color: #065f46; }
+
+.rating {
+    display: flex;
+    align-items: center;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #f59e0b; 
+}
+
+.star-icon {
+    width: 14px;
+    height: 14px;
+    margin-left: 4px;
+}
+
+.link:hover {
+  font-weight: 500;
+  text-decoration: underline;
+}

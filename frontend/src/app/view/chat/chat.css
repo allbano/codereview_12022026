@@ -1,0 +1,10 @@
+.chat-container{
+    background-color: #ccc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+
+    width: 100%;
+    height: 100%;
+}

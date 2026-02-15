@@ -1,0 +1,75 @@
+/* chat-window.component.css */
+.chat-window {
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  height: 75vh;
+  width: 150vh;
+  padding: 15px;
+}
+
+.chat-messages {
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.message {
+  max-width: 75%;
+  padding: 10px 14px;
+  border-radius: 16px;
+  line-height: 1.4;
+  word-wrap: break-word;
+}
+
+.user {
+  background-color: #2563eb;
+  color: white;
+  align-self: flex-end;
+}
+
+.assistant {
+  background-color: #e5e7eb;
+  color: #111;
+  align-self: flex-start;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.message-input {
+  display: flex;
+  gap: 8px;
+  border-top: 1px solid #ddd;
+  padding-top: 10px;
+}
+
+.message-input input {
+  flex: 1;
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.message-input button {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  background-color: #2563eb;
+  color: white;
+  cursor: pointer;
+}
+
+.message-input button:disabled {
+  background-color: #9ca3af;
+}
+
+h1{
+  font-size: larger;
+  font-weight: bold;
+  padding-bottom: 8px;
+}
