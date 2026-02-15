@@ -1,20 +1,16 @@
-// results-panel.component.ts
 import { Component, inject } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { Router } from '@angular/router';
 import { ToolCard } from '../tool-card/tool-card';
+import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-results-panel',
-  standalone: true,
-  imports: [CommonModule, ToolCard],
-  templateUrl: './results-panel.html',
-  styleUrls: ['./results-panel.css']
+  selector: 'app-home-window',
+  imports: [ToolCard],
+  templateUrl: './home-window.html',
+  styleUrl: './home-window.css',
 })
-export class ResultsPanel {
+export class HomeWindow {
   private router = inject(Router);
-  
-  // Mock de dados (seguindo a estrutura que o seu ToolCard espera)
+
   tools = [
     { 
       id: 1, 

@@ -3,7 +3,7 @@
   
   <div class="results-list">
     @for (t of tools; track t.id) {
-      <app-tool-card [tool]="t"></app-tool-card>
+      <app-tool-card [tool]="t" (toolSelected)="onToolSelected($event)"></app-tool-card>
     }
   </div>
 </div>

@@ -1,0 +1,25 @@
+<div class="home-view-wrapper">
+  <div class="home-window">
+      <div class="left">
+        <h1>Filtros de Busca</h1>
+        <!--<div class="filter">
+          <app-filters-bar 
+            [initialFilters]="filters()" 
+            (applyFilters)="updateFilters($event)"
+            (clear)="clearFilters()">
+          </app-filters-bar>-->
+        </div>
+
+    <div class="right">
+        <h1>Ferramentas</h1>
+          <div>
+            @for (t of tools; track t.nome) {
+              <app-tool-card [tool]="t"></app-tool-card>
+            } @empty {
+              <p class="no-results">Nenhuma ferramenta encontrada com os filtros selecionados.</p>
+            }
+          </div>
+    </div>
+    </div>
+</div>
+
