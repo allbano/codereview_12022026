@@ -3,11 +3,11 @@
   <div #messagesContainer class="chat-messages">
     @for (m of messages; track $index) {
       <div [ngClass]="['message', m.role]">
-        <p>{{ m.text }}</p>
-        
+
         @if (m.showResults) {
           <app-results-panel></app-results-panel>
         }
+        <p>{{ m.text }}</p>
       </div>
     }
   </div>
