@@ -1,30 +1,35 @@
 <div class="chat-window">
-    <h1>Chatbot</h1>
-  <div #messagesContainer class="chat-messages">
-    @for (m of messages; track $index) {
-      <div [ngClass]="['message', m.role]">
-
-        @if (m.showResults) {
-          <app-results-panel></app-results-panel>
-        }
-        <p>{{ m.text }}</p>
-      </div>
-    }
+  <div class="menu-area">
+    <app-chat-menu></app-chat-menu>
   </div>
+  <div class="chat-area">
+      <h1>Chatbot</h1>
+      <div #messagesContainer class="chat-messages">
+        @for (m of messages; track $index) {
+          <div [ngClass]="['message', m.role]">
 
-  <div class="message-input">
-    <input
-      [(ngModel)]="inputmsg"
-      type="text"
-      placeholder="Digite sua mensagem..."
-      [disabled]="loading"
-      (keyup.enter)="enviar()"
-    />
-    <button
-      (click)="enviar()"
-      [disabled]="loading"
-    >
-      {{ loading ? 'Aguarde...' : 'Enviar' }}
-    </button>
+            @if (m.showResults) {
+              <app-results-panel></app-results-panel>
+            }
+            <p>{{ m.text }}</p>
+          </div>
+        }
+      </div>
+
+      <div class="message-input">
+        <input
+          [(ngModel)]="inputmsg"
+          type="text"
+          placeholder="Digite sua mensagem..."
+          [disabled]="loading"
+          (keyup.enter)="enviar()"
+        />
+        <button
+          (click)="enviar()"
+          [disabled]="loading"
+        >
+          {{ loading ? 'Aguarde...' : 'Enviar' }}
+        </button>
+      </div>
   </div>
 </div>

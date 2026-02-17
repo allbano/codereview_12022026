@@ -1,13 +1,25 @@
 /* chat-window.component.css */
 .chat-window {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   background-color: #fff;
   border-radius: 12px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   height: 75vh;
   width: 150vh;
   padding: 15px;
+}
+
+.chat-area{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.menu-area{
+  display: flex;
+  flex-direction: column;
+  width: 45vh;
 }
 
 .chat-messages {

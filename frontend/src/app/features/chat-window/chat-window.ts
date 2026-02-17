@@ -5,11 +5,12 @@ import { FormsModule } from '@angular/forms';
 import { ResultsPanel } from '../../shared/components/results-panel/results-panel';
 
 import { ChangeDetectorRef } from '@angular/core';
+import { ChatMenu } from '../../shared/components/chat-menu/chat-menu';
 
 @Component({
   selector: 'app-chat-window',
   standalone: true,
-  imports: [CommonModule, FormsModule, ResultsPanel],
+  imports: [CommonModule, FormsModule, ResultsPanel, ChatMenu],
   templateUrl: './chat-window.html',
   styleUrls: ['./chat-window.css']
 })
