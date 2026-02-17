@@ -1,5 +1,16 @@
-<div>
-    <ul>
-        
-    </ul>
+<h1>Histórico ({{ sessions().length }}/10)</h1>
+<div class="chat-menu">
+  <ul>
+    @for (s of sessions(); track s.uuid) {
+      <li class="item"
+        [class.active]="s.uuid === currentId()"
+        (click)="selectSession(s.uuid)">
+        {{ s.title }}
+        <small>{{ s.date }}</small>
+      </li>
+    }
+  </ul>
 </div>
+
+<button class="nova-convo" (click)="newChat()">Novo Chat</button>
+<button class="nova-convo" (click)="clean()">Limpar (só pra testes)</button> <!-- Botão só para testar, não vai para a versão final -->

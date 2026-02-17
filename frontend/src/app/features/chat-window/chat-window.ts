@@ -1,11 +1,13 @@
 // chat-window.component.ts
-import { Component, ElementRef, ViewChild, AfterViewChecked } from '@angular/core';
+import { Component, ElementRef, ViewChild, AfterViewChecked, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ResultsPanel } from '../../shared/components/results-panel/results-panel';
 
 import { ChangeDetectorRef } from '@angular/core';
 import { ChatMenu } from '../../shared/components/chat-menu/chat-menu';
+import { ChatService } from '../../services/chat-service';
+
 
 @Component({
   selector: 'app-chat-window',
@@ -19,8 +21,19 @@ import { ChatMenu } from '../../shared/components/chat-menu/chat-menu';
 export class ChatWindow implements AfterViewChecked {
   constructor(private cdr: ChangeDetectorRef) {}
 
-  @ViewChild('messagesContainer') private messagesContainer!: ElementRef;
+  //GERADOR DE UUID
+  private chatService = inject(ChatService);
+  // Acessamos o ID da sessão atual
+  sessionId = this.chatService.currentSessionId;
+  ngOnInit() {
+    // Se não houver sessão ativa ao abrir, cria uma
+    if (!this.sessionId()) {
+      this.chatService.createNewSession();
+    }
+  }
+  ////////////////////////////////////////////////////
 
+  @ViewChild('messagesContainer') private messagesContainer!: ElementRef;
   inputmsg = '';
   loading = false;
   messages: any[] = [];
@@ -31,6 +44,14 @@ export class ChatWindow implements AfterViewChecked {
   }
 
  enviar() {
+    // Se por algum motivo não houver UUID, gera antes de enviar
+    if (!this.sessionId()) {
+      this.chatService.createNewSession();
+    }
+    const uuidAtual = this.sessionId();
+    console.log(`Enviando mensagem na sessão: ${uuidAtual}`);
+
+
     if (!this.inputmsg.trim() || this.loading) return;
 
     const userText = this.inputmsg;

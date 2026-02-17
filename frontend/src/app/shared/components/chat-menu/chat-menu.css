@@ -1,0 +1,33 @@
+.chat-menu{
+    height: 60vh;
+    overflow-y: scroll;
+}
+
+.item{
+    display: flex;
+    background-color: #ccc;
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid gray;
+    margin: 5px;
+}
+
+.item:hover{
+    background-color: #989898;
+    cursor: pointer;
+}
+
+.nova-convo{
+    display: flex;
+    background-color: rgb(100, 34, 187);
+    color: white;
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid gray;
+    margin: 5px;
+}
+
+h1{
+    font-weight: bold;
+    font-size: large;
+}
