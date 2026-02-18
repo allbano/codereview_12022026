@@ -1,6 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { MenuItem } from '../menu-item/menu-item';
 import { ChatService } from '../../../services/chat-service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-chat-menu',
@@ -10,21 +11,23 @@ import { ChatService } from '../../../services/chat-service';
 })
 // chat-menu.component.ts
 export class ChatMenu {
+  private router = inject(Router);
   private chatService = inject(ChatService);
   
   sessions = this.chatService.sessions;
   currentId = this.chatService.currentSessionId;
 
   selectSession(uuid: string) {
-    this.chatService.currentSessionId.set(uuid);
-    // Aqui você carregaria as mensagens específicas desse UUID
+    //vai para o uuid da sessão
+    this.router.navigate(['/chat', uuid]);
   }
 
   newChat() {
-    this.chatService.createNewSession();
+    this.router.navigate(['/chat', this.chatService.createNewSession()]);
   }
 
   clean(){
     this.chatService.cleanSessions();
+    this.router.navigate(['/chat']);
   }
 }

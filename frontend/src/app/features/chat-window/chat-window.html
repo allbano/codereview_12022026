@@ -5,7 +5,7 @@
   <div class="chat-area">
       <h1>Chatbot</h1>
       <div #messagesContainer class="chat-messages">
-        @for (m of messages; track $index) {
+        @for (m of activeMessages(); track $index) {
           <div [ngClass]="['message', m.role]">
 
             @if (m.showResults) {
