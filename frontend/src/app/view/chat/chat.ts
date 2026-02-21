@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ChatWindow } from '../../features/chat-window/chat-window';
+import { ChatWindow } from '../../features/chat/chat-window/chat-window';
 
 @Component({
   selector: 'app-chat',

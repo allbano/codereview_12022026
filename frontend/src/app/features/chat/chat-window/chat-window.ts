@@ -2,11 +2,11 @@
 import { Component, ElementRef, ViewChild, AfterViewChecked, computed, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { ResultsPanel } from '../../shared/components/results-panel/results-panel';
+import { ResultsPanel } from '../../../shared/components/results-panel/results-panel';
 
 import { ChangeDetectorRef } from '@angular/core';
-import { ChatMenu } from '../../shared/components/chat-menu/chat-menu';
-import { ChatService } from '../../services/chat-service';
+import { ChatMenu } from '../chat-menu/chat-menu';
+import { ChatService } from '../../../services/chat-service';
 import { ActivatedRoute, Router } from '@angular/router';
 
 

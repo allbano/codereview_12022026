@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
-import { MenuItem } from '../menu-item/menu-item';
 import { ChatService } from '../../../services/chat-service';
 import { Router } from '@angular/router';
+import { MenuItem } from '../../../shared/components/menu-item/menu-item';
 
 @Component({
   selector: 'app-chat-menu',
@@ -29,5 +29,9 @@ export class ChatMenu {
   clean(){
     this.chatService.cleanSessions();
     this.router.navigate(['/chat']);
+  }
+
+   goBack(){
+    this.router.navigate(['/']);
   }
 }
