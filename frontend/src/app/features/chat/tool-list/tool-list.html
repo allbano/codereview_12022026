@@ -1,0 +1,3 @@
+@for (t of tools; track t.id) {
+      <app-tool-card [tool]="t" (toolSelected)="onToolSelected($event)"></app-tool-card>
+    }

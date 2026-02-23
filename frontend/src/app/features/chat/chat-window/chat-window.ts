@@ -48,6 +48,8 @@ export class ChatWindow implements AfterViewChecked {
         // Sincroniza o serviço com o UUID da URL
         this.chatService.currentSessionId.set(uuidDaUrl);
       }
+       //vai para a rota desta session
+        this.router.navigate(['/chat', this.sessionId()]);
     });
   }
   ////////////////////////////////////////////////////
@@ -78,8 +80,6 @@ export class ChatWindow implements AfterViewChecked {
     this.loading = true;
     this.inputmsg = '';
 
-    //vai para a rota desta session
-    this.router.navigate(['/chat', uuidAtual]);
     // 2. Simula resposta do Assistente
     setTimeout(() => {
       const responseMsg = {
