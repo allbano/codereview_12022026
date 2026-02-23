@@ -21,7 +21,9 @@
           placeholder="••••••••">
       </div>
 
-      <p *ngIf="errorMessage" class="text-red-500 text-sm mt-2">{{ errorMessage }}</p>
+      @if (errorMessage) {
+        <p class="text-red-500 text-sm mt-2">{{ errorMessage }}</p>
+      }
 
       <button 
         type="submit" 

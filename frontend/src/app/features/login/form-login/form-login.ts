@@ -26,7 +26,6 @@ export class LoginComponent {
     if (this.loginForm.valid) {
       const { email, password } = this.loginForm.value;
       
-      // Simulação de login Hard Coded
       if (email === 'admin@email.com' && password === '123456') {
         this.router.navigateByUrl('chat');
       } else {
