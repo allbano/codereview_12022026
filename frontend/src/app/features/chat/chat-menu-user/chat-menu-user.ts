@@ -2,16 +2,22 @@ import { Component, inject } from '@angular/core';
 import { MatIcon } from '@angular/material/icon';
 import { Router } from '@angular/router';
 import { ChatService } from '../../../services/chat-service';
+import { ModalConfirm } from '../../../shared/components/modal-confirm/modal-confirm';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 
 
 @Component({
   selector: 'app-chat-menu-user',
-  imports: [MatIcon],
+  imports: [MatIcon, MatDialogModule],
   templateUrl: './chat-menu-user.html',
   styleUrl: './chat-menu-user.css',
 })
 export class ChatMenuUser {
   menuOpen = false; //var de controle pra abrir e fechar o emnu
+  constructor(private dialog: MatDialog) {
+    //para o modal de confirmação
+
+  }
 
   private router = inject(Router);
   private chatService = inject(ChatService);
@@ -33,8 +39,18 @@ export class ChatMenuUser {
     this.router.navigate(['/chat']);
   }
 
-   goBack(){
+  goBack(){
     this.router.navigate(['/']);
   }
 
+  confirmarSaida(){
+    const dialogRef = this.dialog.open(ModalConfirm, {
+  });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.goBack();
+        }
+    });
+  }
 }

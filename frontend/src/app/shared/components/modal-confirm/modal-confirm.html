@@ -1,1 +1,19 @@
-<p>modal-confirm works!</p>
+<div class="p-6">
+      <h2 class="text-xl justify-self-center font-bold text-gray-800 mb-2">Encerrar sessão?</h2>
+      <h3 class="text-sm justify-self-center font-medium text-gray-500 mb-4">Você voltará a página inicial</h3>      
+      <div class="flex justify-end gap-3">
+        <button 
+          mat-button 
+          (click)="dialogRef.close(false)"
+          class="!text-gray-500 hover:!bg-gray-100 hover:!border-indigo-800 border-2 px-4 py-2 rounded-lg">
+          Cancelar
+        </button>
+        
+        <button 
+          mat-flat-button 
+          (click)="dialogRef.close(true)"
+          class="!bg-indigo-800 !text-white px-4 py-2 rounded-lg hover:!bg-indigo-950 transition-colors">
+          Sair do Sistema
+        </button>
+      </div>
+    </div>
