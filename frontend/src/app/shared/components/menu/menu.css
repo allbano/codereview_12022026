@@ -1,12 +1,9 @@
 .navbar{
     display: flex;
-    flex-direction: row;
-    gap: 50%;
-    flex: 1;
-    min-width: screen;
     border-bottom: 2px grey solid;
     height: 70px;
     align-items: center;
+    justify-content: space-around;
 }
 
 .logo{
@@ -21,4 +18,15 @@
     display: flex;
     flex-direction: row;
     gap: 35%;
+    margin: 6px;
+    background-color: oklch(45.7% 0.24 277.023);
+    color: white;
+    border-radius: 14px;
+    padding: 8px;
+}
+
+.buttons:hover{
+    background-color: oklch(58.5% 0.233 277.117);
+    transition: color 0.3s ease;
+    text-decoration-color: none;
 }
