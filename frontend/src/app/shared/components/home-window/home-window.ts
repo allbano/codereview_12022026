@@ -1,15 +1,34 @@
-import { Component, inject } from '@angular/core';
+import { Component, OnInit, inject, signal } from '@angular/core';
 import { ToolCard } from '../tool-card/tool-card';
 import { Router } from '@angular/router';
+import { UserService } from '../../../services/user-service';
+import { UserProfile } from '../../../features/model/user.interface';
 
 @Component({
   selector: 'app-home-window',
+  standalone: true,
   imports: [ToolCard],
   templateUrl: './home-window.html',
   styleUrl: './home-window.css',
 })
-export class HomeWindow {
+
+export class HomeWindow implements OnInit { 
   private router = inject(Router);
+  private userService = inject(UserService);
+  
+  user = signal<UserProfile | null>(null);
+
+  ngOnInit() {
+    // Chamando o ID 1 para teste
+    this.userService.getUser(1).subscribe({
+      next: (data) => {
+        console.log('Usuário carregado:', data);
+        this.user.set(data); 
+      },
+      error: (err) => console.error('Erro ao buscar usuário', err)
+    });
+  }
+
 
   tools = [
     { 

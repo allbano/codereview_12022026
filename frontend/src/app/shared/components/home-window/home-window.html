@@ -1,7 +1,15 @@
 <div class="home-view-wrapper">
   <div class="home-window">
       <div class="left">
-        <h1>Filtros de Busca</h1>
+        <h1>teste de consumo de API</h1>
+            @if (user(); as profile) {
+              <div class="user-info">
+                <span>{{ profile.nome }}</span>
+              </div>
+            } @else {
+              <p>Carregando perfil...</p>
+            }
+
         <!--<div class="filter">
           <app-filters-bar 
             [initialFilters]="filters()" 
