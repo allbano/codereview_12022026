@@ -12,23 +12,8 @@ import { UserProfile } from '../../../features/model/user.interface';
   styleUrl: './home-window.css',
 })
 
-export class HomeWindow implements OnInit { 
+export class HomeWindow { 
   private router = inject(Router);
-  private userService = inject(UserService);
-  
-  user = signal<UserProfile | null>(null);
-
-  ngOnInit() {
-    // Chamando o ID 1 para teste
-    this.userService.getUser(1).subscribe({
-      next: (data) => {
-        console.log('Usuário carregado:', data);
-        this.user.set(data); 
-      },
-      error: (err) => console.error('Erro ao buscar usuário', err)
-    });
-  }
-
 
   tools = [
     { 

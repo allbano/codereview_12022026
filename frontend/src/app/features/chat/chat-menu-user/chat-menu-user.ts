@@ -1,9 +1,14 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit, signal } from '@angular/core';
 import { MatIcon } from '@angular/material/icon';
 import { Router } from '@angular/router';
 import { ChatService } from '../../../services/chat-service';
 import { ModalConfirm } from '../../../shared/components/modal-confirm/modal-confirm';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+
+//puxam o user back
+import { UserService } from '../../../services/user-service';
+import { UserProfile } from '../../../features/model/user.interface';
+
 
 
 @Component({
@@ -12,7 +17,8 @@ import { MatDialog, MatDialogModule } from '@angular/material/dialog';
   templateUrl: './chat-menu-user.html',
   styleUrl: './chat-menu-user.css',
 })
-export class ChatMenuUser {
+
+export class ChatMenuUser implements OnInit {
   menuOpen = false; //var de controle pra abrir e fechar o emnu
   constructor(private dialog: MatDialog) {
     //para o modal de confirmação
@@ -21,6 +27,13 @@ export class ChatMenuUser {
 
   private router = inject(Router);
   private chatService = inject(ChatService);
+
+  //user de teste
+  private userService = inject(UserService);
+  user = signal<UserProfile | null>(null);
+  ngOnInit() {
+    this.userService.getUser(1);
+  }
   
   sessions = this.chatService.sessions;
   currentId = this.chatService.currentSessionId;
@@ -46,11 +59,12 @@ export class ChatMenuUser {
   confirmarSaida(){
     const dialogRef = this.dialog.open(ModalConfirm, {
   });
-
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         this.goBack();
-        }
+        //tira user 
+        this.userService.logout();
+      }
     });
   }
 }
