@@ -15,27 +15,27 @@ export class ToolList {
     { 
       id: 1, 
       nome: 'Ferramenta 1', 
-      finalidade: 'Gerador de textos automáticos', 
+      descricao: 'Gerador de textos automáticos', 
       link_oficial: '#', 
-      requer_programacao: false, 
-      rMedia: 4.5 
+      link_git: '',
+      link_doc: ''
     },
     { 
       id: 2, 
       nome: 'Ferramenta 2', 
-      finalidade: 'Análise de sentimento em tempo real', 
+      descricao: 'analise', 
       link_oficial: '#', 
-      requer_programacao: true, 
-      rMedia: 4.8 
+      link_git: '',
+      link_doc: ''
     },
     { 
       id: 3, 
       nome: 'Ferramenta 3', 
-      finalidade: 'Gerador de imagens via IA', 
+      descricao: 'Gerador de textos automáticos', 
       link_oficial: '#', 
-      requer_programacao: false, 
-      rMedia: 4.2 
-    }
+      link_git: '',
+      link_doc: ''
+    },
   ];
 
   onToolSelected(tool: any): void {

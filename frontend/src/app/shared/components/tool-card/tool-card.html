@@ -1,28 +1,53 @@
   <div class="tool-card" (click)="viewTool()">
     <h3>{{ tool.nome }}</h3>
     
-    <p>{{ tool.finalidade }}</p>
+    <p>{{ tool.descricao }}</p>
 
     <div class="tool-footer">
-      @if (tool.requer_programacao) {
-        <span class="tag required">Requer Programação</span>
-      } @else {
-        <span class="tag not-required">Sem Programação</span>
-      }
-
       <span class="rating">
-        {{ tool.rMedia }} 
+        2
         <img class="star-icon" src="https://cdn-icons-png.flaticon.com/512/8212/8212616.png" alt="Estrela">
       </span>
     </div>
 
-    <span>
-      <a [href]="tool.link_oficial" 
-         target="_blank" 
-         rel="noopener noreferrer" 
-         class="link" 
-         (click)="handleLinkClick($event)">
-         Visite o site oficial
-      </a>
-    </span>
+    <div class="flex flex-col">
+      <div class="flex flex-row justify-start">
+        <p> Visite o site oficial:</p>
+        <span>
+          <a [href]="tool.link_oficial" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            class="link" 
+            (click)="handleLinkClick($event)">
+            site
+          </a>
+        </span>
+      </div>
+
+      <div class="flex flex-row justify-start">
+        <p> Visite o repositório:</p>
+        <span>
+          <a [href]="tool.link_oficial" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            class="link" 
+            (click)="handleLinkClick($event)">
+            github
+          </a>
+        </span>
+      </div>
+
+      <div class="flex flex-row justify-start">
+        <p> Leia a documentação:</p>
+        <span>
+          <a [href]="tool.link_oficial" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            class="link" 
+            (click)="handleLinkClick($event)">
+            docs
+          </a>
+        </span>
+      </div>
+    </div>
   </div>

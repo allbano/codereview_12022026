@@ -57,6 +57,15 @@ export class ChatWindow implements AfterViewChecked {
   @ViewChild('messagesContainer') private messagesContainer!: ElementRef;
   inputmsg = '';
   loading = false;
+  loadMsg = 'Carregando'
+  private loadingMsg: any;
+
+  loadingAni(){ //animaçãozinha do carregamento
+    console.log("CARREGANDO: "+ this.loadMsg)
+    if(this.loadMsg.endsWith('...')) this.loadMsg = 'Carregando';
+    else this.loadMsg += '.';
+  }
+
   // Scroll automático sempre que a vista mudar (novas mensagens)
   ngAfterViewChecked() {
     this.scrollToBottom();
@@ -80,6 +89,8 @@ export class ChatWindow implements AfterViewChecked {
     this.loading = true;
     this.inputmsg = '';
 
+    this.loadingMsg = setInterval(() => this.loadingAni(), 500);
+
     // 2. Simula resposta do Assistente
     setTimeout(() => {
       const responseMsg = {
@@ -95,7 +106,8 @@ export class ChatWindow implements AfterViewChecked {
       console.log('\nmsgs:', this.activeMessages());
       //força o angular a atualizar
       this.cdr.detectChanges();
-    }, 1000);
+      clearInterval(this.loadingMsg)
+    }, 2000);
   }
 
   private scrollToBottom(): void {

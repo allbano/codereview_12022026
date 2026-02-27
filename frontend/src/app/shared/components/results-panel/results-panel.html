@@ -1,9 +1,5 @@
-<div class="results-panel">
+
   <h3>Ferramentas Recomendadas</h3>
-  
-  <div class="results-list">
-    @for (t of tools; track t.id) {
-      <app-tool-card [tool]="t" (toolSelected)="onToolSelected($event)"></app-tool-card>
-    }
-  </div>
+<div class="results-panel">
+ <app-tool-list></app-tool-list>
 </div>

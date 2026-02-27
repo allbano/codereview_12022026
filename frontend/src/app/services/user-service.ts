@@ -25,6 +25,6 @@ export class UserService {
   logout(): void {
     this.currentUser.set(null); // Limpa o usuário
     localStorage.removeItem('user_session'); // Limpa persistência se houver
-    console.log("Usuário siau.");
+    console.log("Usuário saiu.");
   }
 }

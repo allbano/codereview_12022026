@@ -1,3 +1,6 @@
-@for (t of tools; track t.id) {
+
+<div class="flex flex-row">
+  @for (t of tools; track t.id) {
       <app-tool-card [tool]="t" (toolSelected)="onToolSelected($event)"></app-tool-card>
     }
+</div>
