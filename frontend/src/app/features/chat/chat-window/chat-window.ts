@@ -57,12 +57,21 @@ export class ChatWindow implements AfterViewChecked {
   @ViewChild('messagesContainer') private messagesContainer!: ElementRef;
   inputmsg = '';
   loading = false;
+
+  //ANIMAÇÃO DE CARREGAR
   loadMsg = 'Carregando'
-  private loadingMsg: any;
+  private intervalId: any;
+
+  startLoading() {
+    this.intervalId = setInterval(() => {
+      this.loadingAni();
+      this.cdr.detectChanges();
+    }, 75);
+  }
 
   loadingAni(){ //animaçãozinha do carregamento
     console.log("CARREGANDO: "+ this.loadMsg)
-    if(this.loadMsg.endsWith('...')) this.loadMsg = 'Carregando';
+    if(this.loadMsg.endsWith('..............')) this.loadMsg = 'Carregando';
     else this.loadMsg += '.';
   }
 
@@ -88,8 +97,7 @@ export class ChatWindow implements AfterViewChecked {
     const userText = this.inputmsg;
     this.loading = true;
     this.inputmsg = '';
-
-    this.loadingMsg = setInterval(() => this.loadingAni(), 500);
+    this.startLoading();
 
     // 2. Simula resposta do Assistente
     setTimeout(() => {
@@ -106,7 +114,7 @@ export class ChatWindow implements AfterViewChecked {
       console.log('\nmsgs:', this.activeMessages());
       //força o angular a atualizar
       this.cdr.detectChanges();
-      clearInterval(this.loadingMsg)
+      clearInterval(this.intervalId)
     }, 2000);
   }
 
