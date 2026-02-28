@@ -1,8 +1,6 @@
 import { Component, OnInit, inject, signal } from '@angular/core';
 import { ToolCard } from '../tool-card/tool-card';
 import { Router } from '@angular/router';
-import { UserService } from '../../../services/user-service';
-import { UserProfile } from '../../../features/model/user.interface';
 
 @Component({
   selector: 'app-home-window',

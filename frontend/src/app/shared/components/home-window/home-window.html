@@ -1,25 +1,13 @@
 <div class="home-view-wrapper">
   <div class="home-window">
-      <div class="left">
-        <h1>Filtros</h1>
-        <!--<div class="filter">
-          <app-filters-bar 
-            [initialFilters]="filters()" 
-            (applyFilters)="updateFilters($event)"
-            (clear)="clearFilters()">
-          </app-filters-bar>-->
+      <div class="flex flex-col w-110 border-r-3 border-solid border-[#41AFB2]/50 justify-center items-center">
+        <div>
+          <img class="w-[20vh] h-[20vh]" src="assets/images/logo-bg-azul" alt="">
         </div>
-
-    <div class="right">
-        <h1>Ferramentas</h1>
-          <div>
-            @for (t of tools; track t.nome) {
-              <app-tool-card [tool]="t"></app-tool-card>
-            } @empty {
-              <p class="no-results">Nenhuma ferramenta encontrada com os filtros selecionados.</p>
-            }
-          </div>
-    </div>
-    </div>
+      </div>
+      <div class="flex flex-col w-full">
+        <h1>TEXTO</h1>
+      </div>
+  </div>
 </div>
 
