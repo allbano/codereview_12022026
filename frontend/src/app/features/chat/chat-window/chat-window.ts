@@ -66,12 +66,11 @@ export class ChatWindow implements AfterViewChecked {
     this.intervalId = setInterval(() => {
       this.loadingAni();
       this.cdr.detectChanges();
-    }, 75);
+    }, 40);
   }
 
   loadingAni(){ //animaçãozinha do carregamento
-    console.log("CARREGANDO: "+ this.loadMsg)
-    if(this.loadMsg.endsWith('..............')) this.loadMsg = 'Carregando';
+    if(this.loadMsg.endsWith('................')) this.loadMsg = 'Carregando';
     else this.loadMsg += '.';
   }
 

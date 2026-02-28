@@ -1,7 +1,14 @@
   <div class="tool-card" (click)="viewTool()">
-    <h3>{{ tool.nome }}</h3>
+
+    @if (toolI(); as t) {
+              <div class="user-info">
+                <h3>{{ t.tool_name }}</h3>
+              </div>
+    } @else {
+              <h3>nome não encontrado</h3>
+            }
     
-    <p>{{ tool.descricao }}</p>
+    <p>{{ toolI()?.tool_description }}</p>
 
     <div class="tool-footer">
       <span class="rating">
@@ -14,39 +21,46 @@
       <div class="flex flex-row justify-start">
         <p> Visite o site oficial:</p>
         <span>
-          <a [href]="tool.link_oficial" 
-            target="_blank" 
-            rel="noopener noreferrer" 
-            class="link" 
-            (click)="handleLinkClick($event)">
-            site
-          </a>
+          @if(toolI(); as t){
+            <a [href]="toolI()?.tool_official_link" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              class="link" 
+              (click)="handleLinkClick($event)">
+              site
+            </a>
+          }
         </span>
       </div>
 
       <div class="flex flex-row justify-start">
         <p> Visite o repositório:</p>
         <span>
-          <a [href]="tool.link_oficial" 
-            target="_blank" 
-            rel="noopener noreferrer" 
-            class="link" 
-            (click)="handleLinkClick($event)">
-            github
-          </a>
+          @if(toolI(); as t){
+            <a [href]="t.tool_repository_link" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              class="link" 
+              (click)="handleLinkClick($event)">
+              github
+            </a>
+          }
         </span>
       </div>
 
       <div class="flex flex-row justify-start">
         <p> Leia a documentação:</p>
         <span>
-          <a [href]="tool.link_oficial" 
-            target="_blank" 
-            rel="noopener noreferrer" 
-            class="link" 
-            (click)="handleLinkClick($event)">
-            docs
-          </a>
+          @if(toolI(); as t){
+            <a [href]="t.tool_documentation_link" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              class="link" 
+              (click)="handleLinkClick($event)">
+              docs
+            </a>
+          }
+          
         </span>
       </div>
     </div>

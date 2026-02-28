@@ -22,7 +22,6 @@ export class ChatMenuUser implements OnInit {
   menuOpen = false; //var de controle pra abrir e fechar o emnu
   constructor(private dialog: MatDialog) {
     //para o modal de confirmação
-
   }
 
   private router = inject(Router);
