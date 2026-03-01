@@ -13,13 +13,13 @@
 .chat-area{
   display: flex;
   flex-direction: column;
-  width: 100%;
+  width: 75%;
 }
 
 .menu-area{
   display: flex;
   flex-direction: column;
-  width: 45vh;
+  width: 25%;
 }
 
 .chat-messages {
@@ -28,6 +28,7 @@
   display: flex;
   flex-direction: column;
   gap: 12px;
+  padding: 16px;
 }
 
 .message {
@@ -39,13 +40,13 @@
 }
 
 .user {
-  background-color: #2563eb;
+  background-color: #203C7F;
   color: white;
   align-self: flex-end;
 }
 
 .assistant {
-  background-color: #e5e7eb;
+  background-color: #53535350;
   color: #111;
   align-self: flex-start;
   display: flex;

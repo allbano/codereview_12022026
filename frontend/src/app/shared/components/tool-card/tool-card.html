@@ -1,67 +1,80 @@
-  <div class="tool-card" (click)="viewTool()">
+  <div class="tool-card overflow-y-auto" (click)="viewTool()">
+    <div class="flex flex-col gap-[1px]">
+        <div class="flex flex-row justify-between">
+            @if (toolI(); as t) {
+                      <div class="user-info">
+                        <h3>{{ t.tool_name }}</h3>
+                      </div>
+            } @else {
+                      <h3>nome não encontrado</h3>
+                    }
 
-    @if (toolI(); as t) {
-              <div class="user-info">
-                <h3>{{ t.tool_name }}</h3>
-              </div>
-    } @else {
-              <h3>nome não encontrado</h3>
-            }
+            <div class="tool-footer">
+              <span class="rating">
+                2
+                <img class="star-icon" src="https://cdn-icons-png.flaticon.com/512/8212/8212616.png" alt="Estrela">
+              </span>
+            </div>
+        </div>
+
+        <div (click)="toggleDesc($event)" class="description">
+              @if(toolI()?.tool_description){
+                <p>
+                  {{ clickedDesc ? toolI()?.tool_description : shortDesc() }}
+                </p>
+              }
+        </div>
+    </div>
     
-    <p>{{ toolI()?.tool_description }}</p>
+  
+    <div class="flex flex-col justify-between">
+        <div class="flex flex-col p-2 gap-2">
+          <div class="flex flex-row justify-start">
+            <p> Visite o site oficial:</p>
+            <span>
+              @if(toolI(); as t){
+                <a [href]="toolI()?.tool_official_link" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  class="link" 
+                  (click)="handleLinkClick($event)">
+                  site
+                </a>
+              }
+            </span>
+          </div>
 
-    <div class="tool-footer">
-      <span class="rating">
-        2
-        <img class="star-icon" src="https://cdn-icons-png.flaticon.com/512/8212/8212616.png" alt="Estrela">
-      </span>
+          <div class="flex flex-row justify-start">
+            <p> Visite o repositório:</p>
+            <span>
+              @if(toolI(); as t){
+                <a [href]="t.tool_repository_link" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  class="link" 
+                  (click)="handleLinkClick($event)">
+                  github
+                </a>
+              }
+            </span>
+          </div>
+
+          <div class="flex flex-row justify-start">
+            <p> Leia a documentação:</p>
+            <span>
+              @if(toolI(); as t){
+                <a [href]="t.tool_documentation_link" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  class="link" 
+                  (click)="handleLinkClick($event)">
+                  docs
+                </a>
+              }
+              
+            </span>
+          </div>
+        </div>
     </div>
-
-    <div class="flex flex-col">
-      <div class="flex flex-row justify-start">
-        <p> Visite o site oficial:</p>
-        <span>
-          @if(toolI(); as t){
-            <a [href]="toolI()?.tool_official_link" 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              class="link" 
-              (click)="handleLinkClick($event)">
-              site
-            </a>
-          }
-        </span>
-      </div>
-
-      <div class="flex flex-row justify-start">
-        <p> Visite o repositório:</p>
-        <span>
-          @if(toolI(); as t){
-            <a [href]="t.tool_repository_link" 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              class="link" 
-              (click)="handleLinkClick($event)">
-              github
-            </a>
-          }
-        </span>
-      </div>
-
-      <div class="flex flex-row justify-start">
-        <p> Leia a documentação:</p>
-        <span>
-          @if(toolI(); as t){
-            <a [href]="t.tool_documentation_link" 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              class="link" 
-              (click)="handleLinkClick($event)">
-              docs
-            </a>
-          }
-          
-        </span>
-      </div>
-    </div>
+    
   </div>

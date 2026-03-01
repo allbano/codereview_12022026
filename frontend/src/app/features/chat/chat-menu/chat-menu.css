@@ -1,3 +1,7 @@
+body{
+    width: 100%;
+}
+
 .chat-menu{
     height: 57vh;
     overflow-y: scroll;

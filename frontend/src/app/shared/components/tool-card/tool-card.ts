@@ -30,6 +30,16 @@ export class ToolCard {
     });
   }
 
+  clickedDesc = false;
+  toggleDesc(event: Event) {
+    event.stopPropagation();
+    this.clickedDesc = !this.clickedDesc;
+  }
+
+  shortDesc = () => {
+    return `${this.toolI()?.tool_description.slice(0, 30)}...`
+  }
+
   viewTool(): void {
     this.toolSelected.emit(this.tool);
   }
