@@ -37,7 +37,7 @@ export class ToolCard {
   }
 
   shortDesc = () => {
-    return `${this.toolI()?.tool_description.slice(0, 30)}...`
+    return `${this.toolI()?.tool_description.slice(0, 34)}...`
   }
 
   viewTool(): void {

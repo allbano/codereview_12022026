@@ -16,13 +16,13 @@
 
 .home-window {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   gap: 10px;
   width: 57.5rem;  
   height: 35rem;   
   padding: 7vh;   
   border-radius: 1.5rem; 
-  background-color: #203C7F;
+  background-color: #2b4699; /*ESTE É O TOM DE AZUL CERTO DAS LOGOS*/
   box-shadow: 5px 7px 10px rgba(0, 0, 0, 0.25);
 }
 
