@@ -8,5 +8,6 @@ import { MenuItem } from '../menu-item/menu-item';
   styleUrl: './menu.css',
 })
 export class Menu {
+  logoBgBranco = 'assets/images/logo-bg-branco.jpg';
 
 }
