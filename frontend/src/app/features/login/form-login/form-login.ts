@@ -1,8 +1,10 @@
 
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AuthService } from '../../../services/auth-service';
+import { UserService } from '../../../services/user-service';
 
 @Component({
   selector: 'app-form-login',
@@ -12,25 +14,38 @@ import { Router } from '@angular/router';
 })
 
 export class LoginComponent {
-  loginForm: FormGroup;
-  errorMessage: string = '';
 
-  constructor(private fb: FormBuilder, private router : Router) {
-    this.loginForm = this.fb.group({
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(6)]]
-    });
-  }
+  private fb = inject(FormBuilder);
+  private router = inject(Router);
+  private authService = inject(AuthService);
+  private userService = inject(UserService);
+
+  loginForm: FormGroup = this.fb.group({
+    email: ['', [Validators.required, Validators.email]],
+    password: ['', [Validators.required, Validators.minLength(6)]]
+  });
+
+  errorMessage: string = '';
 
   onSubmit() {
     if (this.loginForm.valid) {
-      const { email, password } = this.loginForm.value;
-      
-      if (email === 'admin@email.com' && password === '123456') {
-        this.router.navigateByUrl('chat');
-      } else {
-        this.errorMessage = 'E-mail ou senha inválidos.';
-      }
+      console.log(this.loginForm);
+      this.authService.login(this.loginForm).subscribe({
+             next: (response) => {
+              console.log('Usuário autenticado:', response);
+
+              this.userService.currentUser.set(response.user); 
+
+              if (response.token) { //guarda user no local storage
+                localStorage.setItem('access_token', response.token);
+              }
+
+              this.router.navigate(['/chat']);
+            },
+            error: (err) => {
+              this.errorMessage = 'Usuário não encontrado.';
+            }
+      });
     }
   }
 
