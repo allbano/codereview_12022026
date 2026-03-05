@@ -21,7 +21,7 @@ export class LoginComponent {
   private userService = inject(UserService);
 
   loginForm: FormGroup = this.fb.group({
-    email: ['', [Validators.required, Validators.email]],
+    user_email: ['', [Validators.required, Validators.email]],
     password: ['', [Validators.required, Validators.minLength(6)]]
   });
 
@@ -30,19 +30,19 @@ export class LoginComponent {
   onSubmit() {
     if (this.loginForm.valid) {
       console.log(this.loginForm);
-      this.authService.login(this.loginForm).subscribe({
+      this.authService.login(this.loginForm.value).subscribe({
              next: (response) => {
               console.log('Usuário autenticado:', response);
 
               this.userService.currentUser.set(response.user); 
-
+              //this.userService.getUser(response.user_uuidv7)
               if (response.token) { //guarda user no local storage
                 localStorage.setItem('access_token', response.token);
               }
-
               this.router.navigate(['/chat']);
             },
             error: (err) => {
+              console.error('Erro detalhado:', err);
               this.errorMessage = 'Usuário não encontrado.';
             }
       });

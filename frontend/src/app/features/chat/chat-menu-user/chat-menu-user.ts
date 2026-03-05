@@ -18,7 +18,7 @@ import { UserProfile } from '../../../features/model/user.interface';
   styleUrl: './chat-menu-user.css',
 })
 
-export class ChatMenuUser implements OnInit {
+export class ChatMenuUser {
   menuOpen = false; //var de controle pra abrir e fechar o emnu
   constructor(private dialog: MatDialog) {
     //para o modal de confirmação
@@ -29,10 +29,7 @@ export class ChatMenuUser implements OnInit {
 
   //user de teste
   private userService = inject(UserService);
-  user = signal<UserProfile | null>(null);
-  ngOnInit() {
-    this.userService.getUser(1);
-  }
+  user = this.userService.currentUser;
   
   sessions = this.chatService.sessions;
   currentId = this.chatService.currentSessionId;
@@ -60,9 +57,9 @@ export class ChatMenuUser implements OnInit {
   });
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        this.goBack();
-        //tira user 
+        console.log('usuário saiu')
         this.userService.logout();
+        this.goBack();
       }
     });
   }
