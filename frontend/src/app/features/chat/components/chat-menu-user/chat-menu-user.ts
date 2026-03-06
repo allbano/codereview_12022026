@@ -1,14 +1,12 @@
 import { Component, inject, OnInit, signal } from '@angular/core';
 import { MatIcon } from '@angular/material/icon';
 import { Router } from '@angular/router';
-import { ChatService } from '../../../services/chat-service';
-import { ModalConfirm } from '../../../shared/components/modal-confirm/modal-confirm';
+import { ChatService } from '../../services/chat-service';
+import { ModalConfirm } from '../../../../shared/components/modal-confirm/modal-confirm';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 
 //puxam o user back
-import { UserService } from '../../../services/user-service';
-import { UserProfile } from '../../../features/model/user.interface';
-
+import { UserService } from '../../../user/services/user-service';
 
 
 @Component({

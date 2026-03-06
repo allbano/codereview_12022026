@@ -1,8 +1,6 @@
 // services/auth.service.ts
 import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { UserService } from './user-service';
-import { UserProfile } from '../features/model/user.interface';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {

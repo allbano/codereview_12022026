@@ -3,7 +3,7 @@ import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { ToolCard } from '../tool-card/tool-card';
-import { ToolList } from '../../../features/chat/tool-list/tool-list';
+import { ToolList } from '../../../features/chat/components/tool-list/tool-list';
 
 @Component({
   selector: 'app-results-panel',

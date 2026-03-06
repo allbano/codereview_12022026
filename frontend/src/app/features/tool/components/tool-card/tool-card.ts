@@ -1,8 +1,8 @@
 // tool-card.component.ts
 import { Component, Input, Output, EventEmitter, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ToolService } from '../../../services/tool-service';
-import { ToolInfo } from '../../../features/model/tool.interface';
+import { ToolService } from '../../services/tool-service';
+import { ToolInfo } from '../../model/tool.interface';
 
 @Component({
   selector: 'app-tool-card',

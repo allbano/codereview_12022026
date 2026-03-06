@@ -28,15 +28,10 @@
         <mat-icon>person</mat-icon>
       </div>
       <div class="text-left text-sm font-bold text-gray-800 leading-none">
-        <p> <!--usuário-->
-           @if (user(); as profile) {
-              <div class="user-info">
-                <span>{{ profile.name }}</span>
-              </div>
-            } @else {
-              <p>Usuário não encontrado</p> <!--ou um botão entrar aqui, n da pra ver essa tela sem entrar de qlqr jeito-->
-            }
+        <p class="user-info">
+          {{user()?.user_fullname}}
         </p>
+        
         <p>Enum</p>
       </div>     
     </div>

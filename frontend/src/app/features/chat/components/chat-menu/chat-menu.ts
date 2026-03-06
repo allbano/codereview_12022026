@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
-import { ChatService } from '../../../services/chat-service';
+import { ChatService } from '../../services/chat-service';
 import { Router } from '@angular/router';
-import { MenuItem } from '../../../shared/components/menu-item/menu-item';
+import { MenuItem } from '../../../../shared/components/menu-item/menu-item';
 import { ChatMenuUser } from '../chat-menu-user/chat-menu-user';
 
 @Component({

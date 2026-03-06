@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { Router } from '@angular/router';
-import { ToolCard } from '../../../shared/components/tool-card/tool-card';
+import { ToolCard } from '../../../tool/components/tool-card/tool-card';
 
 @Component({
   selector: 'app-tool-list',

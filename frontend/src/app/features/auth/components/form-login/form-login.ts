@@ -3,8 +3,8 @@ import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AuthService } from '../../../services/auth-service';
-import { UserService } from '../../../services/user-service';
+import { AuthService } from '../../services/auth-service';
+import { UserService } from '../../../user/services/user-service';
 
 @Component({
   selector: 'app-form-login',
@@ -13,12 +13,12 @@ import { UserService } from '../../../services/user-service';
   styleUrl: './form-login.css',
 })
 
-export class LoginComponent {
+export class FormLogin {
 
   private fb = inject(FormBuilder);
   private router = inject(Router);
   private authService = inject(AuthService);
-  private userService = inject(UserService);
+  userService = inject(UserService);
 
   loginForm: FormGroup = this.fb.group({
     user_email: ['', [Validators.required, Validators.email]],
@@ -34,8 +34,9 @@ export class LoginComponent {
              next: (response) => {
               console.log('Usuário autenticado:', response);
 
-              this.userService.currentUser.set(response.user); 
-              //this.userService.getUser(response.user_uuidv7)
+              //this.userService.currentUser.set(response.user); 
+              this.userService.getUser(response.user_uuidv7)
+              //console.log('obj userService: ', response.user_email);
               if (response.token) { //guarda user no local storage
                 localStorage.setItem('access_token', response.token);
               }

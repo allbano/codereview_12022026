@@ -2,7 +2,7 @@
 import { Injectable, inject, signal } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { UserProfile } from '../features/model/user.interface';
+import { UserProfile } from '../model/user.interface';
 
 
 @Injectable({ providedIn: 'root' })
@@ -13,10 +13,10 @@ export class UserService {
 
   currentUser = signal<UserProfile | null>(null);
 
-  getUser(id_user: number): void { //ja seta a data aq ao inves de no ngOnInit
+  getUser(id_user: string): void { //ja seta a data aq ao inves de no ngOnInit
     this.http.get<UserProfile>(`${this.API_URL}/${id_user}`).subscribe({
       next: (data) => {
-        this.id = data.id;
+        this.id = data.user_uuidv7;
         this.currentUser.set(data); // Atualiza o sinal global
       },
       error: (err) => console.error(err)
@@ -24,11 +24,11 @@ export class UserService {
   }
 
   updateProfile(dados: Partial<UserProfile>): Observable<UserProfile> {
-    return this.http.put<UserProfile>(`${this.API_URL}/${dados.id}`, dados);
+    return this.http.put<UserProfile>(`${this.API_URL}/${dados.user_uuidv7}`, dados);
   }
 
   logout() {
-      const userId = this.currentUser()?.id;
+      const userId = this.currentUser()?.user_uuidv7;
       
       // Limpa o front
       this.currentUser.set(null);
