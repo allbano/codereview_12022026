@@ -2,8 +2,9 @@ import { Routes } from '@angular/router';
 
 export const routes: Routes = [
     {
-         path: '',
-        loadComponent: () => import('./view/home/home').then(m => m.Home)
+        path: '',
+        loadComponent: () => import('./view/home/home').then(m => m.Home),
+        title: 'Portal HarmonIA'
     },
     {
         path: 'login/signin',
@@ -11,7 +12,8 @@ export const routes: Routes = [
     },
     {
         path: 'chat',
-         loadComponent: () => import('./view/chat/chat').then(m => m.Chat)
+        loadComponent: () => import('./view/chat/chat').then(m => m.Chat),
+
     },
     {
         path: `chat/:uuid`,

@@ -1,8 +1,4 @@
-import { Injectable } from '@angular/core';
-
-@Injectable({
-  providedIn: 'root',
-})
-export class LoginInterface {
-  
+export interface LoginInterface {
+  user_email: string;
+  user_password: string;
 }

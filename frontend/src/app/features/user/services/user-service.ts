@@ -3,13 +3,15 @@ import { Injectable, inject, signal } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { UserProfile } from '../model/user.interface';
+import { AuthService } from '../../auth/services/auth-service';
 
 
 @Injectable({ providedIn: 'root' })
 export class UserService {
   private http = inject(HttpClient); 
   private readonly API_URL = '/api/users'; 
-  private id = 0;
+  private id: string = '';
+  private authService = inject(AuthService);
 
   currentUser = signal<UserProfile | null>(null);
 
@@ -28,16 +30,27 @@ export class UserService {
   }
 
   logout() {
-      const userId = this.currentUser()?.user_uuidv7;
-      
-      // Limpa o front
-      this.currentUser.set(null);
-      localStorage.clear();
-      this.id = 0;
-
-      if (userId) {
-        //dispara o POST para o back
-        this.http.post(`/api/auth/logout/${userId}`, {}).subscribe();
-      }
+    const user = this.currentUser();
+    //console.log('\nCURRENTUSER'+ this.currentUser())
+    if (user?.user_uuidv7) {
+      this.authService.logout(user.user_uuidv7).subscribe({
+        next: () => {
+          console.log('Logout no servidor concluído');
+          this.limparDadosLocais();
+        },
+        error: (err) => {
+          console.error('Erro no servidor, mas limpando localmente', err);
+          this.limparDadosLocais();
+        }
+      });
+    } else {
+      console.log('SAPORRA ENTROU NO ELSE\n')
+      this.limparDadosLocais();
     }
+  }
+
+  private limparDadosLocais() {
+    this.currentUser.set(null);
+    localStorage.clear();
+  }
 }

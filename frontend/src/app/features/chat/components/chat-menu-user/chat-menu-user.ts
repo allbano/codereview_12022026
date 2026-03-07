@@ -5,7 +5,7 @@ import { ChatService } from '../../services/chat-service';
 import { ModalConfirm } from '../../../../shared/components/modal-confirm/modal-confirm';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 
-//puxam o user back
+//puxa o user back
 import { UserService } from '../../../user/services/user-service';
 
 
@@ -55,10 +55,11 @@ export class ChatMenuUser {
   });
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        console.log('usuário saiu')
-        this.userService.logout();
-        this.goBack();
-      }
+          this.userService.logout();
+          localStorage.clear();
+          console.log('localStorage limpo');
+          this.goBack();
+        }
     });
   }
 }

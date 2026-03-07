@@ -1,22 +1,21 @@
 // services/auth.service.ts
-import { Injectable, inject } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { Injectable, inject, signal } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { LoginInterface } from '../model/login.interface';
+import { UserProfile } from '../../user/model/user.interface';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
   private http = inject(HttpClient);
   private readonly API_URL = '/api/auth/login'; 
+  loginUser = signal<LoginInterface | null>(null);
 
-  login(credentials: any) {
-    const payload = {
-      user_email: credentials.user_email,    
-      user_password: credentials.password 
-    };
-    //console.log("email e senha: ", payload);
-    return this.http.post<any>(this.API_URL, payload);
+  login(credentials: LoginInterface) {
+    return this.http.post<UserProfile>(this.API_URL, credentials);
   }
 
-  logout(userId: any) {
-    return this.http.post(`/api/auth/logout/${userId.user_uuidv7}`, {});
+  logout(userUuid: string) {
+    const url = `$/api/auth/logout/${userUuid}`;
+    return this.http.post(url, {});
   }
 }

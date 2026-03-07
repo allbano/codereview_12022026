@@ -2,7 +2,7 @@
 import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
-import { ToolCard } from '../tool-card/tool-card';
+import { ToolCard } from '../../../features/tool/components/tool-card/tool-card';
 import { ToolList } from '../../../features/chat/components/tool-list/tool-list';
 
 @Component({
